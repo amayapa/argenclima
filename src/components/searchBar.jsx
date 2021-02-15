@@ -6,7 +6,6 @@ import { SB } from "../styles/searchbar";
 const SearchBar = (props) => {
   // console.log("SearchBar props", props);
   const { data, setData, fixName, api, removeAccents } = useContext(Context)
-  const regex = /Province|F.D./gi;
 
   const orderedProvinces = data.provinces.sort(function (a, b) {
     if (a.name > b.name) return 1;
