@@ -26,12 +26,13 @@ const colors = {
   lightBlue: "#e1f2fe",
   lila: "#B2B1CF",
   white: "#ffffff",
+  black: "#333333",
 };
 
 module.exports = {
   device,
   colors,
-  footerHg: "10vh",
-  navBarHg: "20vh",
+  footerHg: "100px",
+  navBarHg: "200px",
   pngShadow: "drop-shadow(2px 2px 3px rgb(0, 0, 0))",
 };

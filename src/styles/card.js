@@ -8,26 +8,44 @@ export const CardComponent = styled.div`
   background-color: ${colors.blue};
   min-width: 300px;
   max-width: 400px;
-  height: fit-content;
+  height: 400px;
   padding: 7px;
   margin: 20px;
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
   box-shadow: 3px 3px 3px grey;
-  & #x {
+  &:hover {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  & #star {
     position: absolute;
-    top: 9px;
+    border: 0px;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    top: 0px;
     right: 9px;
     cursor: pointer;
-    font-size: 28px;
+    font-size: 3em;
     font-weight: bold;
-    color: #843511;
+    color: ${colors.yellow};
+    text-shadow: ${colors.black} 2px 2px 2px;
   }
-  & #x:hover {
-    font-size: 32px;
-    color: red;
-    top: 4px;
-    right: 7px;
+  & #star:hover {
+    font-size: 4em;
+    top: -9px;
+    right: 4px;
   }
   & h3 {
     margin-top: 40px;

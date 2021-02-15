@@ -6,15 +6,19 @@ const FooTer = styled.div`
   margin: 0px;
   width: 100%;
   height: ${footerHg};
-  font-family: "Sofadi One", cursive;
   min-height: 50px;
-  // max-height: 100px;
   align-items: center;
   justify-content: center;
   background-color: ${colors.lila};
   & span {
+    font-family: "Sofadi One", cursive;
     font-size: 22px;
+    font-style: italic;
     margin: 15px;
+    color: ${colors.brown};
+  }
+  & a {
+    text-decoration: none;
   }
 `;
 export default FooTer;

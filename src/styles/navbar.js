@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 export const Navbar = styled.div`
   display: flex;
-  // min-height: 70px;
-  // max-height: 100px;
+  position: sticky;
   font-family: "Sofadi One", cursive;
   justify-content: space-between;
   margin: 0px;

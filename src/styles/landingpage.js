@@ -2,10 +2,21 @@ import styled from "styled-components";
 import { colors, footerHg, navBarHg, pngShadow } from "../styles/globalStyles";
 
 export const Landing = styled.div`
+  margin: 0;
+`;
+export const Title = styled.h1`
+  color: ${colors.yellow};
+  text-align: center;
+  text-shadow: ${colors.black} 1px 1px 2px;
+`;
+
+export const Cards = styled.div`
+  font-size: initial;
+  text-shadow: none;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  min-height: calc(100vh - ${navBarHg} - ${footerHg});
+  min-height: calc(103.9vh - ${navBarHg} - ${footerHg});
   justify-content: space-evenly;
   width: 100%;
   margin: 0px auto;
@@ -28,6 +39,15 @@ export const Landing = styled.div`
     padding: 10px;
     margin: 20px;
     text-decoration: none;
+    position: relative;
+  }
+  & .container:hover {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    transform: scale(0.9);
+    transition: transform 0.5s;
   }
   & h4 {
     margin: 0;

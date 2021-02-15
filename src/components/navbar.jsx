@@ -4,10 +4,11 @@ import SearchBar from './searchBar';
 import { Link } from "react-router-dom";
 import { Navbar, Logos } from '../styles/navbar'
 
-const NavBar = () => {
+const NavBar = (props) => {
+  // console.log("NavBar props", props);
 
   return (
-    <Navbar /* className='navbar' */>
+    <Navbar >
       <Logos>
         <Link to='/'>
           <img id='logo' src={logo} alt="Ups" />

@@ -21,16 +21,22 @@ export const SB = styled.div`
   }
   & select {
     box-shadow: 3px 3px 3px -2px black;
-    border: 1px solid ${colors.blue};
+    border: 0px;
     background-color: ${colors.lightBlue};
-    border-radius: 5px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
-    height: 100%;
+    height: 40px;
     margin: 0px;
     font-family: "Sofadi One", cursive;
     font-size: 1.1em;
     padding-left: 10px;
+    outline: none;
+  }
+  & select:hover {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
   & option {
     font-size: 0.9em;

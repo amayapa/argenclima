@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { device } from "./globalStyles";
+import { device, navBarHg, footerHg } from "./globalStyles";
 
 const DashBoard = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
+  min-height: calc(100vh - ${navBarHg} - ${footerHg});
   width: 100%;
+  max-width: 1200px;
   margin: 0px auto;
   & #extra-info {
     margin: auto;
