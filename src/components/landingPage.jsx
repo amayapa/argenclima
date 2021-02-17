@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const LandingPage = (props) => {
   // console.log("Landing props", props);
-  const { data, setData, api, fixName, addToFav } = useContext(Context)
+  const { data, setData, api, fixName, addToFav, getWikiExtract, removeAccents } = useContext(Context)
   const [info, setInfo] = useState([])
   const [loading, setLoading] = useState(true)
   const ids = {
@@ -74,7 +74,7 @@ const LandingPage = (props) => {
               wind: p.wind.speed.toFixed(1),
               temp: p.main.temp,
               rf: p.main.feels_like.toFixed(1),
-              name: p.name,
+              name: removeAccents(p.name),
               weather: p.weather[0].main,
               clouds: p.clouds.all,
               lat: p.coord.lat,
@@ -82,7 +82,11 @@ const LandingPage = (props) => {
               humidity: p.main.humidity,
             };
             return (
-              <Link key={p.id} id='link' to='/dashboard' params={{ provData: p }} >
+              <Link
+                key={p.id}
+                id='link'
+                to='/dashboard'
+              >
                 <div
                   className='container'
                   onClick={() => {
@@ -90,6 +94,7 @@ const LandingPage = (props) => {
                       ...data,
                       currentProvince: ciudad,
                     })
+                    getWikiExtract(ciudad.name)
                   }}
                 >
                   <Star

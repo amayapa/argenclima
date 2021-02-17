@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, pngShadow } from "../styles/globalStyles";
+import { colors, pngShadow, device } from "../styles/globalStyles";
 
 export const CardComponent = styled.div`
   display: inline-block;
@@ -8,7 +8,7 @@ export const CardComponent = styled.div`
   background-color: ${colors.blue};
   min-width: 300px;
   max-width: 400px;
-  height: 400px;
+  height: 450px;
   padding: 7px;
   margin: 20px;
   border-bottom-left-radius: 30px;
@@ -40,7 +40,7 @@ export const CardComponent = styled.div`
     font-size: 3em;
     font-weight: bold;
     color: ${colors.yellow};
-    text-shadow: ${colors.black} 2px 2px 2px;
+    text-shadow: ${colors.lightBrown} 2px 2px 2px;
   }
   & #star:hover {
     font-size: 4em;
@@ -50,19 +50,20 @@ export const CardComponent = styled.div`
   & h3 {
     margin-top: 40px;
     margin-bottom: 0px;
-    font-size: 1.5em;
+    font-size: 1.75em;
     text-align: center;
     color: #843511;
   }
   & p {
-    font-family: "Sofadi One", cursive;
-    margin: 10px;
-    margin-left: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 22px;
   }
   & span {
-    color: #fcbf49;
-    text-shadow: ${colors.brown} 3px 3px 4px;
-    font-size: 20px;
+    color: azure;
+    /* text-shadow: ${colors.brown} 3px 3px 4px; */
+    font-size: 18px;
   }
   & #stats {
     display: flex;
@@ -82,6 +83,15 @@ export const CardComponent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 20px;
+    margin-right: 10px;
+  }
+  @media ${device.mobileL} {
+    transform: scale(0.9);
+  }
+  @media ${device.mobileM} {
+    transform: scale(0.8);
+  }
+  @media ${device.mobileS} {
+    transform: scale(0.7);
   }
 `;

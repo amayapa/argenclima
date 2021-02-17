@@ -3,9 +3,8 @@ import { Context } from '../context/context';
 import { Link } from "react-router-dom";
 import { SB } from "../styles/searchbar";
 
-const SearchBar = (props) => {
-  // console.log("SearchBar props", props);
-  const { data, setData, fixName, api, removeAccents } = useContext(Context)
+const SearchBar = () => {
+  const { data, setData, fixName, api, removeAccents, getWikiExtract } = useContext(Context)
 
   const orderedProvinces = data.provinces.sort(function (a, b) {
     if (a.name > b.name) return 1;
@@ -13,10 +12,10 @@ const SearchBar = (props) => {
     return 0;
   })
 
-  function onSearch(e, city) {
+  function onSearch(e) {
     e.preventDefault()
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=${api}&units=metric`
     )
       .then((r) => r.json())
       .then((recurso) => {
@@ -40,32 +39,32 @@ const SearchBar = (props) => {
             ...data,
             currentProvince: ciudad
           })
+          getWikiExtract(ciudad.name)
+          window.location = '/#/dashboard'
         }
       });
   }
   return (
     <SB>
-      <Link to='/dashboard'>
-        <select
-          onChange={e => {
-            onSearch(e, e.target.value)
-          }}
-          name="city"
-          id="city"
-          value={data.currentProvince.name}
-        >
-          <option value=''>Seleciona tu Ciudad:</option>
-          {
-            orderedProvinces.map((p, i) => {
-              return (
-                <option key={i} value={removeAccents(p.name)}>
-                  {fixName(p.name)}
-                </option>
-              )
-            })
-          }
-        </select>
-      </Link>
+      <select
+        onChange={e => {
+          onSearch(e)
+        }}
+        name="city"
+        id="city"
+        value={data.currentProvince.name}
+      >
+        <option value=''>Seleciona tu Ciudad:</option>
+        {
+          orderedProvinces.map((p, i) => {
+            return (
+              <option key={i} value={removeAccents(p.name)}>
+                {fixName(p.name)}
+              </option>
+            )
+          })
+        }
+      </select>
     </SB>
   )
 }

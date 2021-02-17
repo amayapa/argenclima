@@ -7,16 +7,16 @@ export const Landing = styled.div`
 export const Title = styled.h1`
   color: ${colors.yellow};
   text-align: center;
-  text-shadow: ${colors.black} 1px 1px 2px;
+  text-shadow: ${colors.lightBrown} 1px 1px 2px;
 `;
 
 export const Cards = styled.div`
   font-size: initial;
   text-shadow: none;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  min-height: calc(103.9vh - ${navBarHg} - ${footerHg});
+  min-height: calc(100vh - ${navBarHg} - ${footerHg});
   justify-content: space-evenly;
   width: 100%;
   margin: 0px auto;
@@ -27,8 +27,8 @@ export const Cards = styled.div`
   }
   & .container {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: space-between;
     box-shadow: 3px 3px 3px grey;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;

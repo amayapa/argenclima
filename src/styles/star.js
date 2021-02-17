@@ -13,7 +13,7 @@ export const Star = styled.button`
   font-size: 2em;
   font-weight: bold;
   color: ${colors.yellow};
-  text-shadow: ${colors.black} 2px 2px 2px;
+  text-shadow: ${colors.lightBrown} 2px 2px 2px;
   :hover {
     transform: rotate(360deg);
   }

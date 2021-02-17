@@ -20,19 +20,19 @@ const device = {
 };
 
 const colors = {
-  blue: "#75AADB",
+  blue: "#74ACDF",
   brown: "#843511",
   yellow: "#FCBF49",
-  lightBlue: "#e1f2fe",
+  lightBlue: "#ffffff",
   lila: "#B2B1CF",
   white: "#ffffff",
-  black: "#333333",
+  lightBrown: "#333333",
 };
 
 module.exports = {
   device,
   colors,
-  footerHg: "100px",
-  navBarHg: "200px",
+  footerHg: "75px",
+  navBarHg: "135px",
   pngShadow: "drop-shadow(2px 2px 3px rgb(0, 0, 0))",
 };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../images/Logo-AC.svg";
 import SearchBar from './searchBar';
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Navbar, Logos } from '../styles/navbar'
 
 const NavBar = (props) => {
   // console.log("NavBar props", props);
+  const [string, setString] = useState('')
 
   return (
     <Navbar >

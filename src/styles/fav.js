@@ -1,12 +1,18 @@
 import styled from "styled-components";
-import { colors, pngShadow, navBarHg, footerHg } from "../styles/globalStyles";
+import {
+  colors,
+  pngShadow,
+  navBarHg,
+  footerHg,
+  device,
+} from "../styles/globalStyles";
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 15px;
-  min-height: calc(103.9vh - ${navBarHg} - ${footerHg});
+  min-height: calc(100vh - ${navBarHg} - ${footerHg});
 `;
 
 export const EmptyFav = styled.div`
@@ -33,8 +39,8 @@ export const Fav = styled.div`
   position: relative;
   background-color: ${colors.blue};
   min-width: 150px;
-  max-width: 300px;
-  height: 300px;
+  max-width: 350px;
+  height: 370px;
   padding: 5px;
   margin: 15px;
   border-bottom-left-radius: 20px;
@@ -45,6 +51,8 @@ export const Fav = styled.div`
     border-top-right-radius: 0;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    transform: scale(0.9);
+    transition: transform 0.5s;
   }
   & #x {
     position: absolute;
@@ -58,7 +66,7 @@ export const Fav = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     color: ${colors.yellow};
-    text-shadow: ${colors.black} 2px 2px 2px;
+    text-shadow: ${colors.lightBrown} 2px 2px 2px;
   }
   & #x:hover {
     font-size: 2.3em;
@@ -66,20 +74,41 @@ export const Fav = styled.div`
     right: 4px;
   }
   & h3 {
-    margin-top: 20px;
-    margin-bottom: 0px;
+    cursor: pointer;
+    padding-bottom: 5px;
+    margin-top: ${(props) =>
+      props.caba === "Buenos Aires F.D."
+        ? "10px"
+        : props.caba === "Santiago del Estero Province"
+        ? "10px"
+        : "25px"};
+    margin-bottom: ${(props) =>
+      props.caba === "Buenos Aires F.D."
+        ? "0px"
+        : props.caba === "Santiago del Estero Province"
+        ? "0px"
+        : "22px"};
+    font-size: 1.75em;
     text-align: center;
     color: #843511;
-    max-width: 200px;
+    max-width: 250px;
+  }
+  & h3:hover {
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
   }
   & p {
-    font-family: "Sofadi One", cursive;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: bold;
     margin: 4px;
     margin-left: 10px;
+    font-size: 20px;
   }
   & span {
-    color: #fcbf49;
-    text-shadow: ${colors.brown} 3px 3px 4px;
+    font-weight: lighter;
+    color: azure;
+    /* text-shadow: ${colors.brown} 1px 1px 1px; */
     font-size: 18px;
   }
   & #stats {
@@ -102,5 +131,37 @@ export const Fav = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-right: 0px;
+  }
+  @media ${device.mobileM} {
+    & h3 {
+      font-size: 1.5em;
+    }
+    & p {
+      font-size: 1em;
+    }
+    &span {
+      font-size: 0.75em;
+    }
+    & #shield {
+      width: 60px;
+      height: 60px;
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobileS} {
+    & h3 {
+      font-size: 1.25em;
+    }
+    & p {
+      font-size: 0.75em;
+    }
+    &span {
+      font-size: 0.5em;
+    }
+    & #shield {
+      width: 50px;
+      height: 50px;
+      margin-left: 30px;
+    }
   }
 `;

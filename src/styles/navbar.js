@@ -16,7 +16,12 @@ export const Navbar = styled.div`
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    height: fit-content;
+  }
+  @media ${device.mobileM} {
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    height: 200px;
   }
 `;
 
@@ -49,6 +54,33 @@ export const Logos = styled(Navbar)`
     padding: 0px;
     & #logo {
       margin-left: 0;
+    }
+  }
+  @media ${device.mobileM} {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+    & #logo {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+  @media ${device.mobileS} {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+    & #logo {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    & #arg {
+      font-size: 2em;
+    }
+    & #encl {
+      font-size: 2em;
+    }
+    & #ima {
+      font-size: 2em;
     }
   }
 `;

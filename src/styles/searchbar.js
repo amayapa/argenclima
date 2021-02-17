@@ -15,10 +15,6 @@ export const SB = styled.div`
     height: 30px;
     text-decoration: none;
   }
-  & Link {
-    /* display: flex; */
-    /* align-items: flex-end; */
-  }
   & select {
     box-shadow: 3px 3px 3px -2px black;
     border: 0px;
@@ -27,7 +23,7 @@ export const SB = styled.div`
     border-top-right-radius: 15px;
     height: 40px;
     margin: 0px;
-    font-family: "Sofadi One", cursive;
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 1.1em;
     padding-left: 10px;
     outline: none;
@@ -49,5 +45,8 @@ export const SB = styled.div`
     & select {
       height: 40px;
     }
+  }
+  @media ${device.mobileS} {
+    font-size: 0.8em;
   }
 `;
