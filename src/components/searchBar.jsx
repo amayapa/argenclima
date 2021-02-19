@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Context } from '../context/context';
-import { Link } from "react-router-dom";
 import { SB } from "../styles/searchbar";
 
 const SearchBar = () => {
