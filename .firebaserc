@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "argenlima-2021"
+    "default": "argenclima2020",
+    "argenclima": "argenclima2020"
   }
 }
