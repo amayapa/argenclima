@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from '../context/context';
 import { FooTer, Credits } from '../styles/footer';
 
-const Footer = (props) => {
-  // console.log("Footer props", props);
+const Footer = () => {
   const { getFavs } = useContext(Context)
 
   return (

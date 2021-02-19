@@ -14,7 +14,7 @@ const SearchBar = () => {
   function onSearch(e) {
     e.preventDefault()
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=${api}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=${api}&units=metric`
     )
       .then((r) => r.json())
       .then((recurso) => {

@@ -3,12 +3,9 @@ import Card from './card';
 import { Context } from '../context/context';
 import DashBoard from '../styles/dashboard'
 
-const Dashboard = (props) => {
+const Dashboard = () => {
   const { data, fixName, wikiExtract } = useContext(Context)
-  // console.log(
-  //   "name", data.currentProvince.name,
-  //   "\nextract", wikiExtract,
-  // );
+
   const salta = '«Salteño» redirige aquí. Para la ciudad argentina del mismo gentilicio, véase Ciudad de Salta. Para la ciudad uruguaya del mismo gentilicio, véase Salto (Uruguay). Para el departamento uruguayo del mismo gentilicio, véase Departamento de Salto.'
   return (
     <DashBoard>

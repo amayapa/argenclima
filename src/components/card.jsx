@@ -34,7 +34,7 @@ const Card = ({ city }) => {
         </div>
         <div id='images'>
           <img src={shields[data.currentProvince.name]} alt='shield' id='shield' />
-          <img src={`http://openweathermap.org/img/wn/${data.currentProvince.img}@2x.png`} alt='icon weather' id='icon' />
+          <img src={`https://openweathermap.org/img/wn/${data.currentProvince.img}@2x.png`} alt='icon weather' id='icon' />
         </div>
       </div>
     </CardComponent>

@@ -24,7 +24,7 @@ const LandingPage = (props) => {
     const getInfo = () => {
       const prov = []
       fetch(
-        `http://api.openweathermap.org/data/2.5/group?id=${ids.from1to20}&appid=${api}&units=metric`
+        `https://api.openweathermap.org/data/2.5/group?id=${ids.from1to20}&appid=${api}&units=metric`
       )
         .then((r) => r.json())
         .then((recurso) => {
@@ -34,7 +34,7 @@ const LandingPage = (props) => {
         })
         .then(() => {
           fetch(
-            `http://api.openweathermap.org/data/2.5/group?id=${ids.from20to}&appid=${api}&units=metric`
+            `https://api.openweathermap.org/data/2.5/group?id=${ids.from20to}&appid=${api}&units=metric`
           )
             .then((r) => r.json())
             .then((recurso) => {
@@ -110,7 +110,7 @@ const LandingPage = (props) => {
                       <p>St <span>{p.main.feels_like.toFixed(1)}&#176;</span></p>
                     </div>
                     <div id='images'>
-                      <img src={`http://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt='icon weather' id='icon' />
+                      <img src={`https://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt='icon weather' id='icon' />
                     </div>
                   </div>
                 </div>

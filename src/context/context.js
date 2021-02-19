@@ -1,36 +1,6 @@
 import React, { createContext, useState } from "react";
 import { provinces } from "./ProvincesData.js";
-// import { cities } from "./ArgentineIds";
-// import WikiIds from "./WikiProvsIds";
 export const Context = createContext();
-
-/* export const provinces = [
-  { name: "Ciudad Autónoma de Buenos Aires" },
-  { name: "Buenos Aires" },
-  { name: "Santa Fé" },
-  { name: "Córdoba" },
-  { name: "Neuquén" },
-  { name: "Chubut" },
-  { name: "Corrientes" },
-  { name: "Jujuy" },
-  { name: "Mendoza" },
-  { name: "Salta" },
-  { name: "San Juan" },
-  { name: "San Luis" },
-  { name: "Misiones" },
-  { name: "Santa Cruz" },
-  { name: "Catamarca" },
-  { name: "Chaco" },
-  { name: "Entre Ríos" },
-  { name: "Formosa" },
-  { name: "La Pampa" },
-  { name: "La Rioja" },
-  { name: "Río Negro" },
-  { name: "Santiago del Estero" },
-  { name: "Tierra del Fuego" },
-  { name: "Tucumán" },
-];
- */
 
 const wikiIds = [
   {
@@ -173,7 +143,6 @@ const Provider = ({ children }) => {
     const request = iDB.open("Favorites", 1);
     request.onsuccess = () => {
       db = request.result;
-      // console.log("OPEN", db);
     };
     request.onupgradeneeded = () => {
       db = request.result;

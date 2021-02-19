@@ -25,7 +25,7 @@ const Favorites = () => {
       }
       else {
         fetch(
-          `http://api.openweathermap.org/data/2.5/group?id=${ids}&appid=${api}&units=metric`
+          `https://api.openweathermap.org/data/2.5/group?id=${ids}&appid=${api}&units=metric`
         )
           .then((r) => r.json())
           .then((recurso) => {
@@ -113,7 +113,7 @@ const Favorites = () => {
                     </div>
                     <div id='images'>
                       <img src={shields[city.name]} alt='shield' id='shield' />
-                      <img src={`http://openweathermap.org/img/wn/${city.img}@2x.png`} alt='icon weather' id='icon' />
+                      <img src={`https://openweathermap.org/img/wn/${city.img}@2x.png`} alt='icon weather' id='icon' />
                     </div>
                   </div>
                 </Fav>
