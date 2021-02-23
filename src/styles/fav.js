@@ -9,12 +9,21 @@ import {
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin: 15px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 15px;
   min-height: calc(100vh - ${navBarHg} - ${footerHg});
 `;
-
+export const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+export const Title = styled.h1`
+  color: ${colors.yellow};
+  text-align: center;
+  text-shadow: ${colors.lightBrown} 1px 1px 2px;
+`;
 export const EmptyFav = styled.div`
   display: flex;
   justify-content: center;

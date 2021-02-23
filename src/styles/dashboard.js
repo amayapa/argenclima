@@ -19,6 +19,8 @@ const DashBoard = styled.div`
   }
   & #text {
     text-align: justify;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 20px;
   }
   @media ${device.tablet} {
     flex-direction: column;

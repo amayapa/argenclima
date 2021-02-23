@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { colors, footerHg, navBarHg, pngShadow } from "../styles/globalStyles";
 
 export const Landing = styled.div`
-  margin: 0;
+  padding: 15px;
+  min-height: calc(100vh - ${navBarHg} - ${footerHg});
 `;
 export const Title = styled.h1`
+  margin-top: 0;
   color: ${colors.yellow};
   text-align: center;
   text-shadow: ${colors.lightBrown} 1px 1px 2px;
@@ -16,7 +18,6 @@ export const Cards = styled.div`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  min-height: calc(100vh - ${navBarHg} - ${footerHg});
   justify-content: space-evenly;
   width: 100%;
   margin: 0px auto;
