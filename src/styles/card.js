@@ -34,18 +34,7 @@ export const CardComponent = styled.div`
     padding: 0;
     background-color: transparent;
     outline: none;
-    top: 0px;
-    right: 9px;
     cursor: pointer;
-    font-size: 3em;
-    font-weight: bold;
-    color: ${colors.yellow};
-    text-shadow: ${colors.lightBrown} 2px 2px 2px;
-  }
-  & #star:hover {
-    font-size: 4em;
-    top: -9px;
-    right: 4px;
   }
   & h3 {
     margin-top: 40px;

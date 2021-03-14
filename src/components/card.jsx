@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { Context } from '../context/context';
 import shields from '../context/shields'
 import { CardComponent } from "../styles/card";
+import Unfav from '../images/unfav.svg'
+import Faved from '../images/faved.svg'
+import { Star } from "../styles/star";
 
 const Card = ({ city }) => {
-  const { data, addToFav, fixName } = useContext(Context);
+  const { data, addToFav, fixName, favorites } = useContext(Context);
   // console.log(city);
 
   const handleOnClick = (e) => {
@@ -15,11 +18,17 @@ const Card = ({ city }) => {
   /* ======================= RENDERING ======================= */
   return (
     <CardComponent>
-      <button
+      <Star
         id='star'
         onClick={(e) => handleOnClick(e)}
-      > &#10025;
-      </button>
+        top='15px'
+      >
+        <img
+          height={50}
+          alt={data.currentProvince.id}
+          src={favorites.matchFavs(data.currentProvince.id) ? Faved : Unfav}
+        />
+      </Star>
       <h3>{data.currentProvince.name && fixName(data.currentProvince.name)}</h3>
       <div id='stats'>
         <div>

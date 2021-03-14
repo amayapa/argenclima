@@ -1,21 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Card from './card';
 import { Context } from '../context/context';
 import DashBoard from '../styles/dashboard'
 
 const Dashboard = () => {
-  const { data, fixName, wikiExtract, setData } = useContext(Context)
+  const { data, fixName, wikiExtract } = useContext(Context)
 
   const salta = '«Salteño» redirige aquí. Para la ciudad argentina del mismo gentilicio, véase Ciudad de Salta. Para la ciudad uruguaya del mismo gentilicio, véase Salto (Uruguay). Para el departamento uruguayo del mismo gentilicio, véase Departamento de Salto.'
-
-  // useEffect(() => {
-  //   return () => {
-  //     setData({
-  //       ...data,
-  //       currentProvince: {}
-  //     })
-  //   }
-  // }, [])
 
   return (
     <DashBoard>

@@ -110,7 +110,16 @@ const Provider = ({ children }) => {
     provincesRes: [],
     currentProvince: {},
     citiesRes: [],
+  });
+  const [favorites, setFavorites] = useState({
     favs: [],
+    matchFavs: function (id) {
+      const matched = this.favs.find((fav) => fav.id === id);
+      if (matched !== undefined) {
+        return true;
+      }
+      return false;
+    },
   });
 
   const fixName = (nom) => {
@@ -172,11 +181,14 @@ const Provider = ({ children }) => {
     const objectStore = transaction.objectStore("favProvinces");
     const request = objectStore.delete(id);
     request.onsuccess = () => {
-      const favorites = data.favs.filter((fav) => fav.id !== id);
-      setData({
-        ...data,
-        favs: favorites,
+      const favs = favorites.favs.filter((fav) => fav.id !== id);
+      setFavorites({
+        ...favorites,
+        favs: favs,
       });
+    };
+    request.onerror = (error) => {
+      console.log("Error", error);
     };
   };
 
@@ -185,10 +197,13 @@ const Provider = ({ children }) => {
     const objectStore = transaction.objectStore("favProvinces");
     const store = objectStore.getAll();
     store.onsuccess = () => {
-      setData({
-        ...data,
+      setFavorites({
+        ...favorites,
         favs: store.result,
       });
+    };
+    store.onerror = (error) => {
+      console.log("Error:", error);
     };
   };
 
@@ -227,6 +242,7 @@ const Provider = ({ children }) => {
         wikiExtract,
         setWikiExtract,
         getWikiExtract,
+        favorites,
       }}
     >
       {children}

@@ -4,20 +4,18 @@ import { Landing, Cards, Title } from "../styles/landingpage";
 import { Spinner } from "../styles/spinner";
 import { Star } from "../styles/star";
 import { Link } from "react-router-dom";
+import Unfav from '../images/unfav.svg'
+import Faved from '../images/faved.svg'
 
 const LandingPage = (props) => {
   // console.log("Landing props", props);
-  const { data, setData, api, fixName, addToFav, getWikiExtract, removeAccents } = useContext(Context)
+  const { data, setData, api, fixName, addToFav, getWikiExtract, removeAccents, getFavs, favorites } = useContext(Context)
   const [info, setInfo] = useState([])
   const [loading, setLoading] = useState(true)
+  const favs = data.favs;
   const ids = {
     from1to20: "3435907,3862286,3861887,3861244,3433955,3435214,3860255,3434137,3433896,3853404,3849574,3848949,3844419,3430657,3843122,3838830,3838231,3837152,3837029,3836350",
     from20to: "3836276,3835868,3834450,3833578"
-  }
-
-  const handleOnClick = (e, data) => {
-    e.preventDefault()
-    addToFav(data);
   }
 
   useEffect(() => {
@@ -56,7 +54,17 @@ const LandingPage = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  console.log(info);
+  useEffect(() => {
+    setTimeout(() => {
+      getFavs()
+    }, 100)
+    // eslint-disable-next-line
+  }, [favs])
+
+  const handleOnClick = (data) => {
+    addToFav(data);
+  }
+
   return (
     <Landing>
       <Title>
@@ -99,12 +107,21 @@ const LandingPage = (props) => {
                   }}
                 >
                   <Star
-                    onClick={(e) => handleOnClick(e, ciudad)}
-                  > &#10025;
+                    onClick={() => handleOnClick(ciudad)}
+                    top='5px'
+                    left='7px'
+                  >
+                    <img
+                      height={25}
+                      alt={p.id}
+                      src={favorites.matchFavs(p.id) ? Faved : Unfav}
+                    />
                   </Star>
-                  <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
-                    {fixName(p.name)}<br />
-                  </h4>
+                  <div className="title">
+                    <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
+                      {fixName(p.name)}<br />
+                    </h4>
+                  </div>
                   <div className='info'>
                     <div id='text'>
                       <p>Temp <span>{p.main.temp.toFixed(1)}&#176;</span></p>
