@@ -3,6 +3,8 @@ import { colors, footerHg, navBarHg, pngShadow } from "../styles/globalStyles";
 
 export const Landing = styled.div`
   padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
   min-height: calc(100vh - ${navBarHg} - ${footerHg});
 `;
 export const Title = styled.h1`
