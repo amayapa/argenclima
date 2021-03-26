@@ -56,7 +56,6 @@ const LandingPage = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  console.log(info);
   return (
     <Landing>
       <Title>

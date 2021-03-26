@@ -7,16 +7,19 @@ import { Spinner } from "../styles/spinner";
 
 const Favorites = () => {
   /* ======================= STATE & VARS ======================= */
-  const { getFavs, data, fixName, api, deleteFav, setData, getWikiExtract } = useContext(Context);
-  const datos = data.favs
-  const ids = datos.map((fav) => fav.id).join(',')
-  const [favsData, setFavsData] = useState([null]);
+  const { getFavs, data, fixName, api, deleteFav, setData, getWikiExtract, favorites } = useContext(Context);
+  const favs = favorites.favs
+  const ids = favs.map((fav) => fav.id).join(',');
+  const [favsData, setFavsData] = useState(null);
 
   /* ======================= FUNCTIONS ======================= */
-  const handleOnClose = (e, id) => {
-    e.preventDefault()
-    deleteFav(id)
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      getFavs()
+    }, 100)
+    // eslint-disable-next-line
+  }, [])
+
   useEffect(() => {
     const getBulkCitiesById = () => {
       const prov = []
@@ -43,15 +46,12 @@ const Favorites = () => {
     };
     getBulkCitiesById();
     // eslint-disable-next-line
-  }, [datos])
+  }, [favs])
 
-  console.log(favsData);
-  useEffect(() => {
-    setTimeout(() => {
-      getFavs()
-    }, 100)
-    // eslint-disable-next-line
-  }, [])
+  const handleOnDelete = (e, id) => {
+    e.preventDefault()
+    deleteFav(id)
+  }
 
   /* ======================= RENDERING ======================= */
   return (
@@ -61,16 +61,16 @@ const Favorites = () => {
       </Title>
       <CardContainer>
         {
-          favsData[0] === null
-            ? (<Spinner></Spinner>)
-            : favsData[0] === 'no favs'
-              ? (
-                <EmptyFav>
-                  <h1>
-                    No tenés ninguna provincia seleccionada como favorita.
-                  </h1>
-                </EmptyFav>
-              )
+          !favs.length
+            ? (
+              <EmptyFav>
+                <h1>
+                  No tenés ninguna provincia seleccionada como favorita.
+              </h1>
+              </EmptyFav>
+            )
+            : favsData == null
+              ? (<Spinner></Spinner>)
               : favsData.map(f => {
                 const city = {
                   min: f.main.temp_min.toFixed(1),
@@ -91,7 +91,7 @@ const Favorites = () => {
                   <Fav key={f.id} caba={f.name}>
                     <button
                       id='x'
-                      onClick={(e) => handleOnClose(e, city.id)}
+                      onClick={(e) => handleOnDelete(e, f.id)}
                     > X
                     </button>
                     <h3
@@ -101,7 +101,7 @@ const Favorites = () => {
                           currentProvince: city,
                         })
                         getWikiExtract(city.name)
-                        window.location = '#/dashboard'
+                        window.location = '/dashboard'
                       }}
                     >{f && fixName(city.name)}
                     </h3>
