@@ -21,7 +21,6 @@ const LandingPage = (props) => {
     if (!favorites.matchFavs(data.id)) {
       addToFav(data);
     } else {
-      console.log('entró');
       deleteFav(data.id);
     }
   }
@@ -121,9 +120,11 @@ const LandingPage = (props) => {
                   <div
                     className='container'
                   >
-                    <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
-                      {fixName(p.name)}<br />
-                    </h4>
+                    <div className="title">
+                      <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
+                        {fixName(p.name)}<br />
+                      </h4>
+                    </div>
                     <div className='info'>
                       <div id='text'>
                         <p>Temp <span>{p.main.temp.toFixed(1)}&#176;</span></p>
