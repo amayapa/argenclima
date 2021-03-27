@@ -5,3 +5,10 @@
 ### It is hosted using Firebase at: 
 
 #### [Follow this link](https://argenclima2020.web.app/)
+
+## Technological stack
+
+- React
+- Context
+- Indexed DB
+- Styled Components
