@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
 import { Context } from '../context/context';
 import { SB } from "../styles/searchbar";
+import { useHistory, useLocation } from "react-router-dom";
 
 const SearchBar = () => {
   const { data, setData, fixName, api, removeAccents, getWikiExtract } = useContext(Context)
+  const location = useLocation();
+  const history = useHistory();
 
   const orderedProvinces = data.provinces.sort(function (a, b) {
     if (a.name > b.name) return 1;
@@ -39,6 +42,9 @@ const SearchBar = () => {
             currentProvince: ciudad
           })
           getWikiExtract(ciudad.name)
+          if (location.pathname !== '/dashboard') {
+            history.push('/dashboard')
+          }
         }
       });
   }
