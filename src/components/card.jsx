@@ -28,10 +28,9 @@ const Card = () => {
     setFav(favorites.matchFavs(data.currentProvince.id))
     // eslint-disable-next-line
   }, [])
-
   /* ======================= RENDERING ======================= */
   return (
-    <CardComponent>
+    <CardComponent marginTop={data.currentProvince.name === 'Buenos Aires F.D.' ? '55px' : '40px'}>
       <Star
         id='star'
         onClick={(e) => handleOnClick(e)}

@@ -37,7 +37,7 @@ export const CardComponent = styled.div`
     cursor: pointer;
   }
   & h3 {
-    margin-top: 40px;
+    margin-top: ${(props) => props.marginTop};
     margin-bottom: 0px;
     font-size: 1.75em;
     text-align: center;
