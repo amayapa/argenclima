@@ -52,6 +52,12 @@ export const Cards = styled.div`
     transform: scale(0.9);
     transition: transform 0.5s;
   }
+  .title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    min-height: 32px;
+  }
   & h4 {
     margin: 0;
     color: ${colors.brown};
