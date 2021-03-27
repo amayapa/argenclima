@@ -30,7 +30,7 @@ const Card = () => {
   }, [])
   /* ======================= RENDERING ======================= */
   return (
-    <CardComponent marginTop={data.currentProvince.name === 'Buenos Aires F.D.' ? '55px' : '40px'}>
+    <CardComponent margintop={data.currentProvince.name === 'Buenos Aires F.D.' ? '55px' : '40px'}>
       <Star
         id='star'
         onClick={(e) => handleOnClick(e)}
