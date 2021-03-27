@@ -150,14 +150,14 @@ const Provider = ({ children }) => {
   if (iDB) {
     var db;
     const request = iDB.open("Favorites", 1);
-    request.onsuccess = () => {
-      db = request.result;
+    request.onsuccess = async () => {
+      db = await request.result;
     };
-    request.onupgradeneeded = () => {
-      db = request.result;
+    request.onupgradeneeded = async () => {
+      db = await request.result;
       console.log("Create", db);
       // eslint-disable-next-line
-      const objectStore = db.createObjectStore("favProvinces", {
+      const objectStore = await db?.createObjectStore("favProvinces", {
         keyPath: "id",
       });
     };
@@ -166,45 +166,53 @@ const Provider = ({ children }) => {
     };
   }
   const addToFav = (data) => {
-    const fav = {
+    const favorite = {
       id: data.id,
       name: data.name,
     };
-    const transaction = db.transaction(["favProvinces"], "readwrite");
-    const objectStore = transaction.objectStore("favProvinces");
+    const transaction = db?.transaction(["favProvinces"], "readwrite");
+    const objectStore = transaction?.objectStore("favProvinces");
     // eslint-disable-next-line
-    const request = objectStore.add(fav);
+    const request = objectStore?.add(favorite);
+    setFavorites({
+      ...favorites,
+      favs: [...favorites.favs, favorite],
+    });
   };
 
   const deleteFav = (id) => {
-    const transaction = db.transaction(["favProvinces"], "readwrite");
-    const objectStore = transaction.objectStore("favProvinces");
-    const request = objectStore.delete(id);
-    request.onsuccess = () => {
-      const favs = favorites.favs.filter((fav) => fav.id !== id);
-      setFavorites({
-        ...favorites,
-        favs: favs,
-      });
-    };
-    request.onerror = (error) => {
-      console.log("Error", error);
-    };
+    const transaction = db?.transaction(["favProvinces"], "readwrite");
+    const objectStore = transaction?.objectStore("favProvinces");
+    const request = objectStore?.delete(id);
+    if (request) {
+      request.onsuccess = () => {
+        const favs = favorites.favs.filter((fav) => fav.id !== id);
+        setFavorites({
+          ...favorites,
+          favs: favs,
+        });
+      };
+      request.onerror = (error) => {
+        console.log("Error", error);
+      };
+    }
   };
 
   const getFavs = () => {
-    const transaction = db.transaction(["favProvinces"], "readonly");
-    const objectStore = transaction.objectStore("favProvinces");
-    const store = objectStore.getAll();
-    store.onsuccess = () => {
-      setFavorites({
-        ...favorites,
-        favs: store.result,
-      });
-    };
-    store.onerror = (error) => {
-      console.log("Error:", error);
-    };
+    const transaction = db?.transaction(["favProvinces"], "readonly");
+    const objectStore = transaction?.objectStore("favProvinces");
+    const store = objectStore?.getAll();
+    if (store) {
+      store.onsuccess = () => {
+        setFavorites({
+          ...favorites,
+          favs: store.result,
+        });
+      };
+      store.onerror = (error) => {
+        console.log("Error:", error);
+      };
+    }
   };
 
   const getWikiExtract = (searchTerm) => {

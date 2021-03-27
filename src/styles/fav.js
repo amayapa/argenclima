@@ -18,6 +18,8 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 export const Title = styled.h1`
   color: ${colors.yellow};

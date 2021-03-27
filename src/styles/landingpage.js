@@ -25,6 +25,7 @@ export const Cards = styled.div`
   margin: 0px auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  position: relative;
   & #link {
     text-decoration: none;
   }
@@ -42,7 +43,6 @@ export const Cards = styled.div`
     padding: 10px;
     margin: 20px;
     text-decoration: none;
-    position: relative;
   }
   & .container:hover {
     border-top-left-radius: 0;

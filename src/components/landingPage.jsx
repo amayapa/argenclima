@@ -4,10 +4,13 @@ import { Landing, Cards, Title } from "../styles/landingpage";
 import { Spinner } from "../styles/spinner";
 import { Star } from "../styles/star";
 import { Link } from "react-router-dom";
+import Unfav from '../images/unfav.svg'
+import Faved from '../images/faved.svg'
 
 const LandingPage = (props) => {
-  // console.log("Landing props", props);
-  const { data, setData, api, fixName, addToFav, getWikiExtract, removeAccents } = useContext(Context)
+  const { data, setData, api, fixName, addToFav, deleteFav, getWikiExtract, removeAccents, getFavs, favorites } = useContext(Context);
+  const favs = favorites.favs;
+
   const [info, setInfo] = useState([])
   const [loading, setLoading] = useState(true)
   const ids = {
@@ -15,9 +18,13 @@ const LandingPage = (props) => {
     from20to: "3836276,3835868,3834450,3833578"
   }
 
-  const handleOnClick = (e, data) => {
-    e.preventDefault()
-    addToFav(data);
+  const handleOnClick = (data) => {
+    if (!favorites.matchFavs(data.id)) {
+      addToFav(data);
+    } else {
+      console.log('entró');
+      deleteFav(data.id);
+    }
   }
 
   useEffect(() => {
@@ -56,6 +63,13 @@ const LandingPage = (props) => {
     // eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    setTimeout(() => {
+      getFavs()
+    }, 100)
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <Landing>
       <Title>
@@ -82,13 +96,21 @@ const LandingPage = (props) => {
               humidity: p.main.humidity,
             };
             return (
-              <Link
-                key={p.id}
-                id='link'
-                to='/dashboard'
-              >
-                <div
-                  className='container'
+              <div style={{ position: 'relative' }} key={p.id}>
+                <Star
+                  onClick={() => handleOnClick(ciudad)}
+                  top='25px'
+                  left='30px'
+                >
+                  <img
+                    height={25}
+                    alt={p.id}
+                    src={favorites.matchFavs(p.id) ? Faved : Unfav}
+                  />
+                </Star>
+                <Link
+                  id='link'
+                  to='/dashboard'
                   onClick={() => {
                     setData({
                       ...data,
@@ -97,24 +119,24 @@ const LandingPage = (props) => {
                     getWikiExtract(ciudad.name)
                   }}
                 >
-                  <Star
-                    onClick={(e) => handleOnClick(e, ciudad)}
-                  > &#10025;
-                  </Star>
-                  <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
-                    {fixName(p.name)}<br />
-                  </h4>
-                  <div className='info'>
-                    <div id='text'>
-                      <p>Temp <span>{p.main.temp.toFixed(1)}&#176;</span></p>
-                      <p>St <span>{p.main.feels_like.toFixed(1)}&#176;</span></p>
-                    </div>
-                    <div id='images'>
-                      <img src={`https://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt='icon weather' id='icon' />
+                  <div
+                    className='container'
+                  >
+                    <h4 style={{ marginLeft: p.name === 'Santiago del Estero Province' ? 25 : p.name === 'Buenos Aires F.D.' ? 22 : 0 }}>
+                      {fixName(p.name)}<br />
+                    </h4>
+                    <div className='info'>
+                      <div id='text'>
+                        <p>Temp <span>{p.main.temp.toFixed(1)}&#176;</span></p>
+                        <p>St <span>{p.main.feels_like.toFixed(1)}&#176;</span></p>
+                      </div>
+                      <div id='images'>
+                        <img src={`https://openweathermap.org/img/wn/${p.weather[0].icon}@2x.png`} alt='icon weather' id='icon' />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             )
           })
         }
