@@ -9,7 +9,6 @@ import Faved from '../images/faved.svg'
 
 const LandingPage = (props) => {
   const { data, setData, api, fixName, addToFav, deleteFav, getWikiExtract, removeAccents, getFavs, favorites } = useContext(Context);
-  const favs = favorites.favs;
 
   const [info, setInfo] = useState([])
   const [loading, setLoading] = useState(true)
