@@ -39,7 +39,7 @@ const SearchBar = () => {
             currentProvince: ciudad
           })
           getWikiExtract(ciudad.name)
-          window.location = '/#/dashboard'
+          window.location = '/dashboard'
         }
       });
   }

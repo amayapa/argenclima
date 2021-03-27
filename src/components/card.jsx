@@ -1,25 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/context';
 import shields from '../context/shields'
 import { CardComponent } from "../styles/card";
+import Unfav from '../images/unfav.svg'
+import Faved from '../images/faved.svg'
+import { Star } from "../styles/star";
 
-const Card = ({ city }) => {
-  const { data, addToFav, fixName } = useContext(Context);
-  // console.log(city);
+const Card = () => {
+  const { data, addToFav, deleteFav, fixName, favorites } = useContext(Context);
+  const [fav, setFav] = useState(false);
 
   const handleOnClick = (e) => {
     e.preventDefault()
-    addToFav(data.currentProvince);
+    if (!fav) {
+      addToFav(data.currentProvince);
+    } else {
+      deleteFav(data.currentProvince.id);
+    }
+    setFav(!fav)
   }
+
+  useEffect(() => {
+    // eslint-disable-next-line
+  }, [fav])
+
+  useEffect(() => {
+    setFav(favorites.matchFavs(data.currentProvince.id))
+    // eslint-disable-next-line
+  }, [])
 
   /* ======================= RENDERING ======================= */
   return (
     <CardComponent>
-      <button
+      <Star
         id='star'
         onClick={(e) => handleOnClick(e)}
-      > &#10025;
-      </button>
+        top='15px'
+      >
+        <img
+          height={50}
+          alt={data.currentProvince.id}
+          src={fav ? Faved : Unfav}
+        />
+      </Star>
       <h3>{data.currentProvince.name && fixName(data.currentProvince.name)}</h3>
       <div id='stats'>
         <div>
