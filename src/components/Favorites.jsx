@@ -4,13 +4,16 @@ import { Context } from '../context/context';
 import shields from '../context/shields';
 import { Fav, Container, EmptyFav, Title, CardContainer } from "../styles/fav";
 import { Spinner } from "../styles/spinner";
+import { useHistory } from "react-router-dom";
 
 const Favorites = () => {
   /* ======================= STATE & VARS ======================= */
   const { getFavs, data, fixName, api, deleteFav, setData, getWikiExtract, favorites } = useContext(Context);
-  const favs = favorites.favs
-  const ids = favs.map((fav) => fav.id).join(',');
+  const history = useHistory();
+
   const [favsData, setFavsData] = useState(null);
+  const favs = favorites.favs;
+  const ids = favs.map((fav) => fav.id).join(',');
 
   /* ======================= FUNCTIONS ======================= */
   useEffect(() => {
@@ -101,7 +104,7 @@ const Favorites = () => {
                           currentProvince: city,
                         })
                         getWikiExtract(city.name)
-                        window.location = '/dashboard'
+                        history.push('/dashboard');
                       }}
                     >{f && fixName(city.name)}
                     </h3>
